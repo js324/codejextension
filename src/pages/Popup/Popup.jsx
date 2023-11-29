@@ -4,6 +4,13 @@ import Greetings from '../../containers/Greetings/Greetings';
 import './Popup.css';
 
 const Popup = () => {
+  // chrome.contextMenus.create({
+  //   title: 'test',
+  //   onclick: function (e) {
+  //     console.log(e)
+  //   }
+  // 
+  // }, function () { })
   return (
     <div className="App">
       <header className="App-header">
