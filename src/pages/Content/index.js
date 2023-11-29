@@ -18,9 +18,9 @@ document.addEventListener('mouseup', function (e) {
         oRange = window.getSelection().getRangeAt(0); //get the text range
         oRect = oRange.getBoundingClientRect();
 
-        console.log(oRect.x, oRect.y);
-        console.log(e.clientX, e.clientY);
-        console.log(window.visualViewport.pageTop);
+        // console.log(oRect.x, oRect.y);
+        // console.log(e.clientX, e.clientY);
+        // console.log(window.visualViewport.pageTop);
 
         renderBubble(oRect.x, oRect.y + window.scrollY - 10, selection);
     }
