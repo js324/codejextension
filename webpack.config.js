@@ -47,7 +47,7 @@ var options = {
     panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: ['background', 'contentScript', 'devtools'],
+    notHotReload: ['background', 'contentScript', 'devtools', 'popup'],
   },
   output: {
     filename: '[name].bundle.js',
