@@ -6,7 +6,7 @@
   right: 0px;
   text-align: center;
   padding: 0px;
-  background-color: #A8DADC;
+  background-color: white;
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +17,9 @@
   justify-content: center;
   flex-grow: 0;
   font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #1229a2;
+  color: #fcf7f8;
+  /* background-color: #A8DADC; */
 }
 
 .App-body {
@@ -31,4 +33,14 @@
   background-color: white;
   overflow-y: scroll;
   color: black;
+  margin-left: 5px;
+}
+
+.Word {
+  text-align: left;
+}
+
+.Definition {
+  font-size: 15px;
+  text-align: left;
 }
