@@ -3,7 +3,17 @@
     position: absolute;
     top: 0;
     left: 0;
+    -moz-box-shadow: 0 0 3px #000000;
+    -webkit-box-shadow: 0 0 3px #000000;
+    box-shadow: 0 0 3px #000000;
+}
 
+.title {
+    font-size: 20px;
+    padding-left: 5px;
+    max-height: 60px;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
 .selection_bubble {
@@ -13,14 +23,19 @@
     min-height: 100px;
     max-width: 400px;
     max-height: 200px;
+    padding: 10px;
     z-index: 2147483647;
+    /* border-radius: 20px 20px 0px 0px; */
 }
 
 .down-arrow {
+    overflow: visible;
     border-bottom: 5px solid white;
+
 }
 
 .down-arrow:after {
+    overflow: visible;
     content: '';
     position: absolute;
     left: 0;

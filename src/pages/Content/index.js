@@ -6,6 +6,9 @@ var title = document.createElement('div');
 var body = document.createElement('div');
 var footer = document.createElement('div');
 var downArrow = document.createElement('div');
+footer.setAttribute('class', 'footer');
+title.setAttribute('class', 'title');
+
 parent.setAttribute('class', 'parent');
 bubbleDOM.setAttribute('class', 'selection_bubble');
 downArrow.setAttribute('class', 'down-arrow');
@@ -69,7 +72,10 @@ document.addEventListener('mousedown', function (e) {
 
 // Move that bubble to the appropriate location.
 function renderBubble(mouseX, mouseY, selection) {
-    title.innerHTML = selection;
+    title.innerHTML = selection.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ');;
     body.innerText = "TESTING DEFINITION LOREM IPSUM DOLOR"
     footer.innerText = "MORE LINKS"
     console.log("rendering")
