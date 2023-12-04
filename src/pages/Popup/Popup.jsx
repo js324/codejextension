@@ -5,25 +5,18 @@ import './Popup.css';
 
 
 const dict = {
-
+  "Python": "A programming language named after a movie",
 }
-
 
 
 const Entry = (props) => {
   return (
     <div>
       <h1 className="Word">{props.word}</h1>
-      <h2 className="Definition">ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h2>
+      <h2 className="Definition">{props.def}</h2>
     </div>
   )
 }
-
-
 
 const Popup = () => { //state hook
 
@@ -34,6 +27,9 @@ const Popup = () => { //state hook
           function (response) {
             var text = document.getElementById('text');
             newEntry(response.data);
+            if (response.data in dict) {
+              newDefinition(dict[response.data]);
+            }
             console.log(entry);
             console.log(response.data);
           });
@@ -41,6 +37,8 @@ const Popup = () => { //state hook
   }
 
   const [entry, newEntry] = useState("");
+  const [definition, newDefinition] = useState("");
+
   pasteSelection();
 
   return (
@@ -50,8 +48,7 @@ const Popup = () => { //state hook
         <h2>highl<span style={{ color: "#f7b32b" }}>A</span><span style={{ color: "#f7b32b" }}>I</span>ter</h2>
       </header>
       <body className="App-body">
-
-        <Entry word={entry} />
+        <Entry word={entry} def={definition} />
       </body>
     </div>
   );
