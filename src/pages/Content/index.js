@@ -1,4 +1,6 @@
 // Add bubble to the top of the page.
+
+
 console.log("TESTING!");
 var parent = document.createElement('div');
 var bubbleDOM = document.createElement('div');
@@ -31,19 +33,18 @@ chrome.runtime.onMessage.addListener(
             "from the extension");
         console.log(request)
         if (request.action === "define_word") {
-            console.log('defining')
             var selection = window.getSelection().toString();
             if (selection.length > 0) {
                 oRange = window.getSelection().getRangeAt(0); //get the text range
                 oRect = oRange.getBoundingClientRect();
-
                 // console.log(oRect.x, oRect.y);
                 // console.log(e.clientX, e.clientY);
                 // console.log(window.visualViewport.pageTop);
 
-                renderBubble(oRect.x + oRect.width / 2, oRect.y + window.scrollY - 20, selection);
+                renderBubble(oRect.x + oRect.width / 2, oRect.y + window.scrollY - 20, selection, request.url);
             }
         }
+        return true;
 
     }
 );
@@ -71,18 +72,24 @@ document.addEventListener('mousedown', function (e) {
 }, false);
 
 // Move that bubble to the appropriate location.
-function renderBubble(mouseX, mouseY, selection) {
-    title.innerHTML = selection.toLowerCase()
+async function renderBubble(mouseX, mouseY, selection, url) {
+    title.innerHTML = selection
         .split(' ')
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');;
-    body.innerText = "TESTING DEFINITION LOREM IPSUM DOLOR"
-    footer.innerText = "MORE LINKS"
+    const site = url
+    const input = title.innerHTML
+    console.log(`http://localhost:3004/?site=${site}&input=${input}`);
+    const resp = await fetch(`http://localhost:3004/?site=${site}&input=${input}`)
+    const respP = await resp.json();
+    console.log(respP)
+    body.innerText = respP.definition
     console.log("rendering")
 
     parent.style.top = mouseY - bubbleDOM.offsetHeight + 'px';
     parent.style.left = mouseX - bubbleDOM.offsetWidth / 2 + 'px';
     parent.style.visibility = 'visible';
+
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {

@@ -8,7 +8,8 @@
   },
   "permissions": [
     "contextMenus",
-    "tabs"
+    "tabs",
+    "*://localhost:*/*"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -30,7 +31,7 @@
       "css": [
         "content.styles.css"
       ],
-      "all_frames": true
+      "all_frames": false
     }
   ],
   "devtools_page": "devtools.html",

@@ -5,7 +5,7 @@ chrome.contextMenus.onClicked.addListener(genericOnClick);
 // A generic onclick callback function.
 function genericOnClick(info) {
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "define_word" }, function (response) { });
+        chrome.tabs.sendMessage(tabs[0].id, { action: "define_word", url: tabs[0].url }, function (response) { });
     });
 
 }
